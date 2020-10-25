@@ -24,7 +24,7 @@ def db_setup(projectid):
 	private = os.environ.get("PRIVATE_KEY")
 	
 	# Use a service account
-	cred = credentials.Certificate(private)
+	cred = credentials.Certificate(os.path.join(os.getcwd(), "get_pic", private))
 	firebase_admin.initialize_app(cred, {'storageBucket': 'plant-e-fc09e.appspot.com'})
 
 	return storage.bucket(), firestore.client()
